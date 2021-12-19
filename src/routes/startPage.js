@@ -4,10 +4,10 @@ const StartPage = () => {
   return (
     <div className="startpage">
       <input className="name-box" placeholder="Enter your name..." />
-      <Link to="/ttt/play/0">
+      <Link to="/play/0">
         <button className="button">Play as a first player.</button>
       </Link>
-      <Link to="/ttt/play/1">
+      <Link to="/play/1">
         <button className="button">Play as a second player.</button>
       </Link>
     </div>

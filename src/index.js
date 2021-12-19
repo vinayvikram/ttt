@@ -2,15 +2,15 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import StartPage from "./routes/startPage";
 import GamePage from "./routes/gamePage";
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 ReactDOM.render(
-  <HashRouter>
+  <BrowserRouter>
     <Routes>
-      <Route path="/ttt/" element={<StartPage />} />
-      <Route path="/ttt/play/0" element={<GamePage mode={0} />} />
-      <Route path="/ttt/play/1" element={<GamePage mode={1} />} />
+      <Route exact path="/" element={<StartPage />} />
+      <Route path="play/0" element={<GamePage mode={0} />} />
+      <Route path="play/1" element={<GamePage mode={1} />} />
     </Routes>
-  </HashRouter>,
+  </BrowserRouter>,
   document.getElementById("root")
 );
