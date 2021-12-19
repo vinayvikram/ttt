@@ -1,13 +1,68 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+#root {
+  background-color: grey;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.board {
+  padding: 10px;
+  border: 5px dashed bisque;
+}
+
+.box {
+  height: 100px;
+  width: 100px;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  margin: 2px;
+  font-size: 80px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.result,
+.start {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+  background-color: black;
+  color: whitesmoke;
+  margin: 10px;
+  font-size: 30px;
+}
+
+.startpage {
+  width: 300px;
+  height: 300px;
+  background-color: black;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.name-box {
+  padding: 5px;
+  color: black;
+  background-color: white;
+  font-size: 20px;
+}
+
+.button {
+  background-color: cadetblue;
+  color: black;
+  padding: 2px;
+  margin: 10px;
+  font-size: 20px;
 }
