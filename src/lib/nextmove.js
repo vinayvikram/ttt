@@ -110,6 +110,12 @@ const otherMove = (state) => {
     }
   }
 
+  for (let i = 0; i < 9; i++) {
+    if (state[i] === null) {
+      return i;
+    }
+  }
+
   return -1;
 };
 

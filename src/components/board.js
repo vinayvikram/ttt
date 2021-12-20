@@ -3,6 +3,8 @@ import Result from "./result";
 import nextMove from "../lib/nextmove";
 import { useState } from "react";
 
+var result = "Playing...";
+
 const checkWinner = (state) => {
   const lines = [
     [0, 1, 2],
@@ -25,12 +27,17 @@ const checkWinner = (state) => {
       result = `Player ${state[line[0]]} won the game.`;
     }
   }
-};
 
-var result = "Playing...";
+  if (state.every((value, index) => value !== null)) {
+    result = "The match is drawn";
+  }
+};
 
 const Board = ({ defaultState }) => {
   const [state, setState] = useState(defaultState.slice());
+  if (state.every((value, index) => value == defaultState[index])) {
+    result = "Playing...";
+  }
 
   const handleClick = (i) => {
     if (result !== "Playing...") {
