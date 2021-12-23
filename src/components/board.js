@@ -1,69 +1,38 @@
 import Box from "./box";
 import Result from "./result";
 import nextMove from "../lib/nextmove";
+import checkWinner from "../lib/checkWinner";
 import { useState } from "react";
 
-var result = "Playing...";
-
-const checkWinner = (state) => {
-  const lines = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
-  ];
-
-  for (let line of lines) {
-    let check =
-      state[line[0]] !== null &&
-      state[line[0]] === state[line[1]] &&
-      state[line[1]] === state[line[2]];
-
-    if (check) {
-      result = `Player ${state[line[0]]} won the game.`;
-    }
-  }
-
-  if (state.every((value, index) => value !== null)) {
-    result = "The match is drawn";
-  }
-};
-
 const Board = ({ defaultState }) => {
-  const [state, setState] = useState(defaultState.slice());
-  if (state.every((value, index) => value == defaultState[index])) {
-    result = "Playing...";
-  }
+  const [state, setState] = useState([...defaultState]);
+  const [winner, setWinner] = useState("__");
 
   const handleClick = (i) => {
-    if (result !== "Playing...") {
+    if (state.every((value, index) => value !== null)) {
       alert("Start the game again.");
       return;
     }
 
     state[i] = "O";
     let x = nextMove(state);
-    state[x] = "X";
-    setState(state.slice());
-    checkWinner(state);
-    if (x === -1) {
-      result = `The match is drawn`;
+
+    if (x !== -1) {
+      state[x] = "X";
     }
+
+    let w = checkWinner(state);
+    setState([...state]);
+    setWinner(w);
   };
 
   const start = () => {
-    setState(defaultState.slice());
-    result = "Playing...";
+    setState([...defaultState]);
+    setWinner("__");
   };
+
   return (
-    <div>
-      <div className="start" onClick={start}>
-        Start
-      </div>
+    <div className="game">
       <div className="board">
         <div className="row">
           <Box i={0} state={state[0]} handleClick={handleClick} />
@@ -81,7 +50,10 @@ const Board = ({ defaultState }) => {
           <Box i={8} state={state[8]} handleClick={handleClick} />
         </div>
       </div>
-      <Result result={result} />
+      <button className="start" onClick={start}>
+        Start
+      </button>
+      <Result result={winner} />
     </div>
   );
 };

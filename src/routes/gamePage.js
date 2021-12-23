@@ -1,12 +1,40 @@
 import Board from "../components/board";
+import { Link } from "react-router-dom";
 
-const states = [
-  [null, null, null, null, null, null, null, null, null],
-  [null, null, null, null, "X", null, null, null, null],
-];
-
-const GamePage = ({ mode }) => {
-  return <Board defaultState={states[mode]} />;
+const FirstModeGame = () => {
+  return (
+    <div className="container">
+      <div className="modes">
+        <Link to="/0">
+          <button className="button">First Player Mode</button>
+        </Link>
+        <Link to="/1">
+          <button className="button">Second Player Mode</button>
+        </Link>
+      </div>
+      <Board
+        defaultState={[null, null, null, null, null, null, null, null, null]}
+      />
+    </div>
+  );
 };
 
-export default GamePage;
+const SecondModeGame = () => {
+  return (
+    <div className="container">
+      <div className="modes">
+        <Link to="/0">
+          <button className="button">First Player Mode</button>
+        </Link>
+        <Link to="/1">
+          <button className="button">Second Player Mode</button>
+        </Link>
+      </div>
+      <Board
+        defaultState={[null, null, null, null, "X", null, null, null, null]}
+      />
+    </div>
+  );
+};
+
+export { FirstModeGame, SecondModeGame };
