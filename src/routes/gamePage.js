@@ -5,7 +5,7 @@ const FirstModeGame = () => {
   return (
     <div className="container">
       <div className="modes">
-        <Link to="/0">
+        <Link to="/">
           <button className="button">First Player Mode</button>
         </Link>
         <Link to="/1">
@@ -23,7 +23,7 @@ const SecondModeGame = () => {
   return (
     <div className="container">
       <div className="modes">
-        <Link to="/0">
+        <Link to="/">
           <button className="button">First Player Mode</button>
         </Link>
         <Link to="/1">
