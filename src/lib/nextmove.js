@@ -32,11 +32,11 @@ const states = [
   [null, null, "O", null, "X", null, "O", null, null, 1],
 
   [null, "O", null, null, "X", null, "O", null, null, 2], //drawing moves
-  [null, null, null, null, "X", "O", "O", null, null, 6],
+  [null, null, null, null, "X", "O", "O", null, null, 8],
   [null, null, "O", null, "X", null, "O", null, null, 1],
 
   [null, "O", null, null, "X", null, null, null, "O", 0], //drawing moves
-  [null, null, null, "O", "X", null, null, null, "O", 8],
+  [null, null, null, "O", "X", null, null, null, "O", 6],
   ["O", null, null, null, "X", null, null, null, "O", 1],
 
   [null, null, null, null, "X", "O", null, "O", null, 8],
@@ -76,7 +76,6 @@ const criticalStates = [
 ];
 
 const otherMove = (state) => {
-  console.log("othermove");
   for (let s of criticalStates) {
     if (state[s[0]] === "X" && state[s[1]] === "X" && state[s[2]] === null) {
       return s[2];
@@ -114,7 +113,6 @@ const otherMove = (state) => {
   }
 
   for (let i = 0; i < 9; i++) {
-    console.log("Here");
     if (state[i] === null) {
       return i;
     }
